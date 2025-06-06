@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Laura Carezzato - Minha Jornada no Desenvolvimento Web</title>
+    <meta name="description" content="Timeline interativa documentando minha evolução no desenvolvimento web durante o semestre">
+    <meta name="author" content="Maria Laura Carezzato">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Maria Laura Carezzato - Jornada no Desenvolvimento Web">
+    <meta property="og:description" content="Timeline interativa da minha evolução no desenvolvimento web">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="Maria Laura Carezzato - Jornada no Desenvolvimento Web">
+    <meta property="twitter:description" content="Timeline interativa da minha evolução no desenvolvimento web">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a2e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-yellow: #f0d000;
+            --accent-green: #00ff88;
+            --accent-purple: #8b5cf6;
+            --gradient-yellow: linear-gradient(135deg, #f0d000, #00ff88);
+            --gradient-purple: linear-gradient(135deg, #8b5cf6, #ec4899);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--gradient-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="400" fill="none" stroke="rgba(240,208,0,0.1)" stroke-width="2"/><circle cx="500" cy="500" r="300" fill="none" stroke="rgba(0,255,136,0.1)" stroke-width="2"/><circle cx="500" cy="500" r="200" fill="none" stroke="rgba(139,92,246,0.1)" stroke-width="2"/></svg>') center/cover;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Main Content */
+        .main {
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(240,208,0,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-yellow);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 4rem 0;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px rgba(240, 208, 0, 0.5);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .timeline-card.image-project::before {
+            background: var(--gradient-yellow);
+        }
+
+        .timeline-card.video-project::before {
+            background: var(--gradient-purple);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .image-placeholder.image-type {
+            background: var(--gradient-yellow);
+            color: var(--primary-bg);
+        }
+
+        .image-placeholder.video-type {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-link {
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link.primary {
+            background: var(--gradient-yellow);
+            color: var(--primary-bg);
+        }
+
+        .project-link.secondary {
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-level {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-bg);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background: var(--accent-yellow);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-item::before {
+                left: 10px !important;
+                right: auto !important;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .about,
+            .skills {
+                padding: 2rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-yellow);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">MARIA LAURA CAREZZATO</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">INÍCIO</a></li>
+                <li><a href="#sobre">QUEM SOU EU?</a></li>
+                <li><a href="#timeline">LINHA DO TEMPO</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>MINHA JORNADA NO DESENVOLVIMENTO WEB</h1>
+            <p class="hero-subtitle">Descobrindo, criando e evoluindo através do código</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- About Section -->
+        <section class="section" id="sobre">
+            <div class="container">
+                <div class="about fade-in">
+                    <div class="about-content">
+                        <h2>QUEM SOU EU?</h2>
+                        <p>Desde criança, sempre fui apaixonado por tecnologia e descobrir como as coisas funcionam. O que começou como uma curiosidade se transformou em algo muito maior. Encontrei na programação uma forma de expressar minha criatividade, a habilidade de transformar ideias em realidade através do código.</p>
+                        
+                        <p>Minha jornada no desenvolvimento web começou com HTML e CSS básicos, mas rapidamente evoluiu para projetos complexos envolvendo JavaScript, frameworks modernos e design responsivo. Cada projeto representa um degrau na minha evolução como desenvolvedor.</p>
+                        
+                        <p>Este portfólio documenta não apenas os projetos que criei, mas também minha evolução pessoal e profissional. Cada linha de código escrita, cada problema resolvido e cada obstáculo superado me tornaram o desenvolvedor que sou hoje.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="section" id="timeline">
+            <div class="container">
+                <h2 class="section-title">LINHA DO TEMPO</h2>
+                <div class="timeline">
+                    <!-- Projeto 1 - Tipografia -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-card video-project">
+                            <div class="project-header">
+                                <h3 class="project-title">TIPOGRAFIA</h3>
+                                <span class="project-date">Março 2025</span>
+                            </div>
+                            <div class="image-placeholder video-type">
+                                📹 Keyframe de Vídeo - Projeto Tipografia
+                            </div>
+                            <p class="project-description">
+                                Primeiro contato com design tipográfico e suas aplicações no desenvolvimento web. Explorei diferentes famílias de fontes, hierarquias visuais e como a tipografia impacta a experiência do usuário.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Google Fonts</span>
+                                <span class="tech-tag">Typography</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">Ver Projeto</a>
+                                <a href="#" class="project-link secondary">Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 - Logos e Gestalt -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-card image-project">
+                            <div class="project-header">
+                                <h3 class="project-title">LOGOS E GESTALT</h3>
+                                <span class="project-date">Março 2025</span>
+                            </div>
+                            <div class="image-placeholder image-type">
+                                🖼️ Keyframe de Imagem - Projeto Logos e Gestalt
+                            </div>
+                            <p class="project-description">
+                                Estudo aprofundado dos princípios de Gestalt aplicados ao design de logos. Compreendi como o cérebro humano processa informações visuais e como aplicar esses conceitos em projetos web.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Design Theory</span>
+                                <span class="tech-tag">Gestalt Principles</span>
+                                <span class="tech-tag">Logo Design</span>
+                                <span class="tech-tag">Visual Hierarchy</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">Ver Projeto</a>
+                                <a href="#" class="project-link secondary">Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 - Prototipagem -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-card image-project">
+                            <div class="project-header">
+                                <h3 class="project-title">PROTOTIPAGEM</h3>
+                                <span class="project-date">Abril 2025</span>
+                            </div>
+                            <div class="image-placeholder image-type">
+                                🖼️ Keyframe de Imagem - Projeto Prototipagem
+                            </div>
+                            <p class="project-description">
+                                Mergulho profundo no mundo da prototipagem digital. Aprendi a criar wireframes, protótipos de baixa e alta fidelidade, e como testar ideias antes da implementação.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">Wireframing</span>
+                                <span class="tech-tag">Prototyping</span>
+                                <span class="tech-tag">UX Design</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">Ver Projeto</a>
+                                <a href="#" class="project-link secondary">Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 4 - HTML -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-card video-project">
+                            <div class="project-header">
+                                <h3 class="project-title">HTML</h3>
+                                <span class="project-date">Abril 2025</span>
+                            </div>
+                            <div class="image-placeholder video-type">
+                                📹 Keyframe de Vídeo - Projeto HTML
+                            </div>
+                            <p class="project-description">
+                                Fundamentos sólidos em HTML semântico. Aprendi sobre acessibilidade, SEO, e como estruturar documentos web de forma profissional e semanticamente correta.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">Semantic HTML</span>
+                                <span class="tech-tag">Accessibility</span>
+                                <span class="tech-tag">SEO</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">Ver Projeto</a>
+                                <a href="#" class="project-link secondary">Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 5 - CSS -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-card video-project">
+                            <div class="project-header">
+                                <h3 class="project-title">CSS</h3>
+                                <span class="project-date">Maio 2025</span>
+                            </div>
+                            <div class="image-placeholder video-type">
+                                📹 Keyframe de Vídeo - Projeto CSS
+                            </div>
+                            <p class="project-description">
+                                Domínio completo do CSS moderno. Flexbox, Grid, animações, responsividade e técnicas avançadas de layout. Transformei designs estáticos em experiências interativas e dinâmicas.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">Flexbox</span>
+                                <span class="tech-tag">CSS Grid</span>
+                                <span class="tech-tag">Animations</span>
+                                <span class="tech-tag">Responsive Design</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">Ver Projeto</a>
+                                <a href="#" class="project-link secondary">Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <div class="container">
+                <div class="skills fade-in">
+                    <h2 class="section-title">HABILIDADES ADQUIRIDAS</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">🎨</div>
+                            <h3 class="skill-name">Design UI/UX</h3>
+                            <p class="skill-level">Prototipagem, Wireframing, Design Systems</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">💻</div>
+                            <h3 class="skill-name">Frontend Development</h3>
+                            <p class="skill-level">HTML5, CSS3, JavaScript, Responsive Design</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">🚀</div>
+                            <h3 class="skill-name">Performance & SEO</h3>
+                            <p class="skill-level">Otimização, Acessibilidade, Semântica</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">🔧</div>
+                            <h3 class="skill-name">Ferramentas</h3>
+                            <p class="skill-level">Figma, Git, GitHub, DevTools</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="section">
+            <div class="container">
+                <div class="about fade-in">
+                    <div class="about-content">
+                        <h2>REFLEXÃO FINAL</h2>
+                        <p>Esta jornada de desenvolvimento web transformou completamente minha perspectiva sobre tecnologia e criatividade. Cada projeto representou não apenas um desafio técnico, mas uma oportunidade de crescimento pessoal e profissional.</p>
+                        
+                        <p>Aprendi que o desenvolvimento web vai muito além de escrever código - é sobre resolver problemas, criar experiências memoráveis e impactar positivamente a vida das pessoas. A evolução de conceitos básicos de HTML até projetos complexos com animações avançadas me mostrou que o aprendizado é um processo contínuo e gratificante.</p>
+                        
+                        <p>Os próximos passos incluem aprofundar conhecimentos em JavaScript, explorar frameworks modernos como React e Vue.js, e continuar desenvolvendo projetos que desafiem meus limites criativos e técnicos. O futuro é promissor e estou animado para continuar essa jornada de descobertas no mundo do desenvolvimento web.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <h3>VAMOS CONVERSAR?</h3>
+                <p>Estou sempre aberto a novas oportunidades, colaborações e conversas interessantes sobre desenvolvimento web e tecnologia.</p>
+                
+                <div class="social-links">
+                    <a href="mailto:maria.laura@email.com" class="social-link" aria-label="Email">
+                        📧
+                    </a>
+                    <a href="https://linkedin.com/in/marialauracarezzato" class="social-link" aria-label="LinkedIn">
+                        💼
+                    </a>
+                    <a href="https://github.com/marialauracarezzato" class="social-link" aria-label="GitHub">
+                        💻
+                    </a>
+                    <a href="https://behance.net/marialauracarezzato" class="social-link" aria-label="Behance">
+                        🎨
+                    </a>
+                    <a href="https://instagram.com/marialauracarezzato" class="social-link" aria-label="Instagram">
+                        📸
+                    </a>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 Maria Laura Carezzato. Desenvolvido com ❤️ e muito ☕</p>
+                    <p>Timeline Interativa - Projeto Final de Desenvolvimento Web</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Timeline Animation Stagger
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Navbar Background on Scroll
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Project Card Hover Effects
+        const projectCards = document.querySelectorAll('.timeline-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic Text Animation
+        const heroTitle = document.querySelector('.hero h1');
+        const titleText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < titleText.length) {
+                heroTitle.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 1500);
+
+        // Parallax Effect for Hero Background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Skills Animation on Scroll
+        const skillCards = document.querySelectorAll('.skill-card');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        });
+
+        skillCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            skillObserver.observe(card);
+        });
+
+        // Easter Egg - Konami Code
+        let konamiCode = [];
+        const konamiSequence = [
+            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+            'KeyB', 'KeyA'
+        ];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                // Easter egg activated
+                document.body.style.animation = 'rainbow 2s infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                    alert('🎉 Parabéns! Você encontrou o easter egg! 🎉');
+                }, 2000);
+            }
+        });
+
+        // Add rainbow animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log(`⚡ Página carregada em ${loadTime}ms`);
+                
+                // Log performance if > 3 seconds
+                if (loadTime > 3000) {
+                    console.warn('⚠️ Página demorou mais que 3 segundos para carregar');
+                }
+            });
+        }
+
+        // Service Worker Registration (for future PWA features)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Placeholder for future service worker
+                console.log('🔧 Ready for PWA features');
+            });
+        }
+
+        // Console Easter Egg
+        console.log(`
+        🎨 Timeline Interativa - Maria Laura Carezzato
+        
+        ╔══════════════════════════════════════╗
+        ║  Obrigado por visitar meu portfólio! ║
+        ║                                      ║
+        ║  Este projeto foi desenvolvido com:  ║
+        ║  • HTML5 Semântico                   ║
+        ║  • CSS3 Avançado                     ║
+        ║  • JavaScript Vanilla                ║
+        ║  • Muito ❤️ e ☕                      ║
+        ║                                      ║
+        ║  Gostou? Vamos conversar!            ║
+        ╚══════════════════════════════════════╝
+        
+        📧 maria.laura@email.com
+        💼 linkedin.com/in/marialauracarezzato
+        💻 github.com/marialauracarezzato
+        `);
+    </script>
+</body>
+</html>
